@@ -5,6 +5,9 @@ export const StyledFlexRow = styled.div`
   flex-direction: row;
   max-width: 100%;
   width: 100%;
+  justify-content: ${(props) =>
+    props.spaced ? "space-between" : "flex-start"};
+
   & div:first-child {
     margin-right: 16px;
   }

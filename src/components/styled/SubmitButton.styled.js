@@ -4,7 +4,7 @@ export const StyledButton = styled.div`
   align-self: flex-start;
   display: block;
   border: 0px solid transparent;
-  background-color: #1a79ff;
+  background-color: ${(props) => (props.warning ? "#ff6363" : "#1a79ff")};
   color: white;
   font-family: Inter, sans-serif;
   font-size: 18px;
@@ -16,10 +16,10 @@ export const StyledButton = styled.div`
   transition: 135ms ease-in-out;
 
   &:hover {
-    background-color: #0062eb;
+    background-color: ${(props) => (props.warning ? "#e34949" : "#0062eb")};
   }
   &:active {
-    background-color: #025ede;
+    background-color: ${(props) => (props.warning ? "#cf4242" : "#025ede")};
   }
 `;
 

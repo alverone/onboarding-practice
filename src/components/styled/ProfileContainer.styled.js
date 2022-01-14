@@ -7,7 +7,7 @@ export const ProfileContainer = styled.div`
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
-  & div:not(:first-child) {
+  & > div:not(:first-child) {
     margin-top: 16px;
   }
 `;

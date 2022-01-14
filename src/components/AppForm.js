@@ -1,4 +1,4 @@
-import { Formik, Form } from "formik";
+import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import { TextInput } from "./TextInput";
 import { FlexRow } from "./FlexRow";
@@ -34,9 +34,15 @@ const initialState = {
 export const AppForm = ({ modalHandler }) => {
   const dispatch = useDispatch();
 
-  const handleFormSubmission = (values) => {
+  const handleFormSubmission = (values, { setErrors }) => {
     const userData = { ...values, id: uuid() };
-    dispatch(postUserFetch({ user: userData, modalHandler: modalHandler }));
+    dispatch(
+      postUserFetch({
+        user: userData,
+        modalHandler: modalHandler,
+        errorHandler: setErrors,
+      })
+    );
   };
 
   return (

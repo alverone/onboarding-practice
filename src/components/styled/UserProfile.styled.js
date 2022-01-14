@@ -6,4 +6,5 @@ export const StyledUserProfile = styled.div`
   background-color: #0d0d0d;
   color: white;
   display: inline-block;
+  position: relative;
 `;

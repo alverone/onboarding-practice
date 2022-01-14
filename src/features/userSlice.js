@@ -23,8 +23,9 @@ const userSlice = createSlice({
       state.userData = {};
     },
     postUserError: (state, action) => {
-      console.log(action.payload);
-      state.error = action.payload;
+      const { errors, handler } = action.payload;
+      handler(errors);
+      state.error = errors;
     },
   },
 });

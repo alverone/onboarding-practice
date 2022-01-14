@@ -2,7 +2,7 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import { postUserError, postUserSuccess } from "./userSlice";
 
 function* workPostUserFetch(action) {
-  const { user, modalHandler } = action.payload;
+  const { user, modalHandler, errorHandler } = action.payload;
   const request = yield call(() =>
     fetch("http://localhost:8001/user", {
       method: "POST",
@@ -19,7 +19,7 @@ function* workPostUserFetch(action) {
     yield put(postUserSuccess());
   } else {
     const message = yield request.json();
-    yield put(postUserError(message.errors));
+    yield put(postUserError({ errors: message.errors, handler: errorHandler }));
   }
 }
 

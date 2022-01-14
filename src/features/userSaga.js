@@ -1,10 +1,9 @@
-import { call, put, takeEvery, select } from "redux-saga/effects";
-import { postUserSuccess, toggleModal } from "./userSlice";
+import { call, put, takeEvery } from "redux-saga/effects";
+import { postUserError, postUserSuccess } from "./userSlice";
 
-function* workPostUserFetch() {
-  const user = yield select((state) => state.user.userData);
-
-  yield call(() =>
+function* workPostUserFetch(action) {
+  const { user, modalHandler } = action.payload;
+  const request = yield call(() =>
     fetch("http://localhost:8001/user", {
       method: "POST",
       headers: {
@@ -15,8 +14,13 @@ function* workPostUserFetch() {
     })
   );
 
-  yield put(postUserSuccess());
-  yield put(toggleModal(false));
+  if (request.status === 200) {
+    yield modalHandler();
+    yield put(postUserSuccess());
+  } else {
+    const message = yield request.json();
+    yield put(postUserError(message.errors));
+  }
 }
 
 export function* userSaga() {

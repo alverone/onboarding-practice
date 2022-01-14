@@ -1,20 +1,10 @@
-import { Button } from "@mui/material";
 import { useFormikContext } from "formik";
-import { StyledButton } from "./styled/SubmitButton.styled";
+import { StyledSubmitButton } from "./styled/SubmitButton.styled";
 
-export function SubmitButton({ children, ...otherProps }) {
+export function SubmitButton({ children }) {
   const { submitForm } = useFormikContext();
 
-  const config = {
-    ...otherProps,
-    variant: "contained",
-    color: "primary",
-    onClick: submitForm,
-  };
-
   return (
-    <StyledButton>
-      <Button {...config}>{children}</Button>
-    </StyledButton>
+    <StyledSubmitButton onClick={submitForm}>{children}</StyledSubmitButton>
   );
 }

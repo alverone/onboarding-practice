@@ -14,10 +14,10 @@ export function UserProfile({ user, index }) {
   return (
     <StyledUserProfile onClick={handleClick}>
       <Typography variant="h4">
-        {firstName + " " + lastName + ", " + country}
+        {`${firstName} ${lastName}, ${country}`}
       </Typography>
-      <Typography variant="h6">Contact: {email}</Typography>
-      <Typography variant="p">{bio && `About me: ${bio}`}</Typography>
+      <Typography variant="h6">{`Contact: ${email}`}</Typography>
+      {bio && <Typography variant="p">{`About me: ${bio}`}</Typography>}
     </StyledUserProfile>
   );
 }

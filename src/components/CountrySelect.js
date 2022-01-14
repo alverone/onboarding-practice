@@ -1,5 +1,5 @@
 import { Autocomplete, Box, TextField } from "@mui/material";
-import { countries } from "./countries";
+import { countries } from "../countries";
 import { useFormikContext, useField } from "formik";
 import { StyledCountrySelect } from "./styled/CountrySelect.styled";
 

@@ -4,7 +4,6 @@ const initialState = {
   userData: {},
   error: "",
   users: [],
-  modal: false,
 };
 
 const userSlice = createSlice({
@@ -15,11 +14,8 @@ const userSlice = createSlice({
       const index = action.payload;
       state.users.splice(index, 1);
     },
-    toggleModal: (state, action) => {
-      state.modal = action.payload;
-    },
     postUserFetch: (state, action) => {
-      state.userData = action.payload;
+      state.userData = action.payload.user;
     },
     postUserSuccess: (state) => {
       state.error = "";
@@ -27,16 +23,12 @@ const userSlice = createSlice({
       state.userData = {};
     },
     postUserError: (state, action) => {
+      console.log(action.payload);
       state.error = action.payload;
     },
   },
 });
 
-export const {
-  toggleModal,
-  removeUser,
-  postUserFetch,
-  postUserSuccess,
-  postUserError,
-} = userSlice.actions;
+export const { removeUser, postUserFetch, postUserSuccess, postUserError } =
+  userSlice.actions;
 export default userSlice.reducer;

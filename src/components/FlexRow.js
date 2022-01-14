@@ -1,5 +1,5 @@
 import { StyledFlexRow } from "./styled/FlexRow.styled";
 
-export default function FlexRow({ children }) {
+export const FlexRow = ({ children }) => {
   return <StyledFlexRow>{children}</StyledFlexRow>;
-}
+};

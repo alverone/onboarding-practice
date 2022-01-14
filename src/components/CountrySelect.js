@@ -3,7 +3,7 @@ import { countries } from "../countries";
 import { useFormikContext, useField } from "formik";
 import { StyledCountrySelect } from "./styled/CountrySelect.styled";
 
-export function CountrySelect({ name }) {
+export const CountrySelect = ({ name }) => {
   const formikProps = useFormikContext();
   const [field, meta] = useField(name);
 
@@ -52,4 +52,4 @@ export function CountrySelect({ name }) {
       />
     </StyledCountrySelect>
   );
-}
+};

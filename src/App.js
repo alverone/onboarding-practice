@@ -6,7 +6,7 @@ import { ProfileContainer } from "./components/styled/ProfileContainer.styled";
 import { useState } from "react";
 import { useUsers } from "./features/selectors/useUsers";
 
-export default function App() {
+const App = () => {
   const [formModalVisibility, setFormModalVisibility] = useState(false);
   const users = useUsers();
 
@@ -26,4 +26,6 @@ export default function App() {
       )}
     </>
   );
-}
+};
+
+export default App;

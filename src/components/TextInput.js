@@ -2,7 +2,7 @@ import { useField } from "formik";
 import { TextField } from "@mui/material";
 import { StyledTextInput } from "./styled/TextInput.styled.js";
 
-export function TextInput({ name, ...otherProps }) {
+export const TextInput = ({ name, ...otherProps }) => {
   const [field, meta] = useField(name);
 
   const config = {
@@ -22,4 +22,4 @@ export function TextInput({ name, ...otherProps }) {
       <TextField {...config} />
     </StyledTextInput>
   );
-}
+};

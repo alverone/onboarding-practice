@@ -3,7 +3,7 @@ import { StyledUserProfile } from "./styled/UserProfile.styled";
 import { removeUser } from "../features/userSlice";
 import { useDispatch } from "react-redux";
 
-export function UserProfile({ user, index }) {
+export const UserProfile = ({ user, index }) => {
   const { lastName, firstName, email, country, bio } = user;
   const dispatch = useDispatch();
 
@@ -20,4 +20,4 @@ export function UserProfile({ user, index }) {
       {bio && <Typography variant="p">{`About me: ${bio}`}</Typography>}
     </StyledUserProfile>
   );
-}
+};

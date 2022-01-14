@@ -1,7 +1,7 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { TextInput } from "./TextInput";
-import FlexRow from "./FlexRow";
+import { FlexRow } from "./FlexRow";
 import { CountrySelect } from "./CountrySelect";
 import { SubmitButton } from "./SubmitButton";
 import { ControlledCheckbox } from "./ControlledCheckbox";
@@ -31,13 +31,13 @@ const initialState = {
   tos: false,
 };
 
-export function AppForm({ modalHandler }) {
+export const AppForm = ({ modalHandler }) => {
   const dispatch = useDispatch();
 
-  function handleFormSubmission(values) {
+  const handleFormSubmission = (values) => {
     const userData = { ...values, id: uuid() };
     dispatch(postUserFetch({ user: userData, modalHandler: modalHandler }));
-  }
+  };
 
   return (
     <StyledForm>
@@ -70,4 +70,4 @@ export function AppForm({ modalHandler }) {
       </ModalCloseButton>
     </StyledForm>
   );
-}
+};

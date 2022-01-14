@@ -2,13 +2,13 @@ import { Checkbox } from "@mui/material";
 import { useField, useFormikContext } from "formik";
 import { StyledError } from "./styled/Error.styled.js";
 
-export function ControlledCheckbox({ name, ...otherProps }) {
+export const ControlledCheckbox = ({ name, ...otherProps }) => {
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext();
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     setFieldValue(name, e.target.checked);
-  }
+  };
 
   const config = {
     ...otherProps,
@@ -34,4 +34,4 @@ export function ControlledCheckbox({ name, ...otherProps }) {
       {errorConfig.error && <StyledError>{errorConfig.helperText}</StyledError>}
     </label>
   );
-}
+};

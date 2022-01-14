@@ -21,12 +21,11 @@ function validateUser({ firstName, lastName, email, age, country, bio, tos }) {
   if (isFinite(Number(lastName)) || forbiddenCharsRegex.test(lastName)) {
     errors.lastName = "Invalid name";
   }
-  //test
 
   if (!emailRegex.test(email)) {
-    errors.name = "Invalid email";
+    errors.email = "Invalid email";
   } else if (!email.length) {
-    errors.name = "Empty email field";
+    errors.email = "Empty email field";
   }
 
   if (!isFinite(Number(age))) {

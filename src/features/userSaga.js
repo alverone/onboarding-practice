@@ -4,7 +4,7 @@ import { postUserError, postUserSuccess } from "./userSlice";
 function* workPostUserFetch(action) {
   const { user, modalHandler, errorHandler } = action.payload;
   const request = yield call(() =>
-    fetch("http://localhost:8001/user", {
+    fetch("http://localhost:8000/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

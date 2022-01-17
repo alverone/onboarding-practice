@@ -14,6 +14,10 @@ const userSlice = createSlice({
       const index = action.payload;
       state.users.splice(index, 1);
     },
+    updateUser: (state, action) => {
+      const { index, userData } = action.payload;
+      state.users[index] = userData;
+    },
     postUserFetch: (state, action) => {
       state.userData = action.payload.user;
     },
@@ -30,6 +34,11 @@ const userSlice = createSlice({
   },
 });
 
-export const { removeUser, postUserFetch, postUserSuccess, postUserError } =
-  userSlice.actions;
+export const {
+  removeUser,
+  updateUser,
+  postUserFetch,
+  postUserSuccess,
+  postUserError,
+} = userSlice.actions;
 export default userSlice.reducer;

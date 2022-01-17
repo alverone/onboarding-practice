@@ -14,9 +14,28 @@ const userSlice = createSlice({
       const index = action.payload;
       state.users.splice(index, 1);
     },
-    updateUser: (state, action) => {
-      const { index, userData } = action.payload;
-      state.users[index] = userData;
+    setUser: (state, action) => {
+      state.userData = action.payload;
+    },
+    updateUserPost: (state, action) => {
+      state.userData = action.payload.user;
+    },
+    updateUserSuccess: (state, action) => {
+      const userData = action.payload;
+      let userIndex = 0;
+
+      state.users.filter((user, index) => {
+        if (user.id === userData.id) {
+          userIndex = index;
+          return true;
+        }
+        return false;
+      });
+
+      let newUsers = state.users;
+      newUsers[userIndex] = userData;
+
+      state.users = newUsers;
     },
     postUserFetch: (state, action) => {
       state.userData = action.payload.user;
@@ -36,7 +55,9 @@ const userSlice = createSlice({
 
 export const {
   removeUser,
-  updateUser,
+  updateUserPost,
+  updateUserSuccess,
+  setUser,
   postUserFetch,
   postUserSuccess,
   postUserError,

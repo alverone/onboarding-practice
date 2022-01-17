@@ -1,92 +1,52 @@
 import { StyledUserProfile } from "./styled/UserProfile.styled";
 import { CloseButton } from "./styled/ModalCloseButton.styled";
-import { ContentEditable } from "./ContentEditable";
-import { StyledMarginedFlexRow } from "./styled/FlexRow.styled";
-import { Button } from "./Button";
-import { useState } from "react";
-import { updateUser } from "../features/userSlice";
-import { useDispatch } from "react-redux";
+import styled from "styled-components";
 
-export const UserProfile = ({ user, index }) => {
-  const [bio, setBio] = useState(user.bio);
-  const [lastName, setLastName] = useState(user.lastName);
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [email, setEmail] = useState(user.email);
-  const [country, setCountry] = useState(user.country);
-  const [age, setAge] = useState(user.age);
-  const dispatch = useDispatch();
+const StyledButton = styled.button`
+  -webkit-appearance: none;
+  appearance: none;
+  border: 3px solid black;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top: 12px;
+  right: 58px;
 
-  const hasValuesChanged = () => {
-    if (
-      bio !== user.bio ||
-      lastName !== user.lastName ||
-      firstName !== user.firstName ||
-      email !== user.email ||
-      country !== user.country ||
-      Number(age) !== user.age
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+  & img {
+    width: auto;
+    height: 100%;
+    max-height: 22px;
+  }
+`;
 
-  const cancelChanges = () => {
-    setBio(user.bio);
-    setFirstName(user.firstName);
-    setLastName(user.lastName);
-    setAge(user.age);
-    setCountry(user.country);
-    setEmail(user.email);
-  };
+export const UserProfile = ({ user, modalHandler, idHandler }) => {
+  const { lastName, firstName, email, country, bio, age } = user;
 
-  const commitChanges = () => {
-    const updatedUser = {
-      firstName,
-      lastName,
-      country,
-      age,
-      email,
-      bio,
-      id: user.id,
-    };
-
-    dispatch(updateUser({ index: index, userData: updatedUser }));
+  const openModal = () => {
+    idHandler(user.id);
+    modalHandler(true);
   };
 
   return (
     <StyledUserProfile>
       <CloseButton>
-        <img src="./close-sign.png" alt="Close modal form" width="32" />
+        <img src="./close-sign.png" alt="Close modal form" width="36" />
       </CloseButton>
-      <div>
-        <ContentEditable state={firstName} stateHandler={setFirstName} />
-        <ContentEditable state={lastName} stateHandler={setLastName} />
-        <span>, </span>
-        <ContentEditable state={age.toString()} stateHandler={setAge} />
-        <span>years old</span>
-      </div>
-      <div>
-        <span>Country: </span>
-        <ContentEditable state={country} stateHandler={setCountry} />
-      </div>
-      <div>
-        <span>Contact: </span>
-        <ContentEditable state={email} stateHandler={setEmail} />
-      </div>
-
-      <div>
-        <span>About user: </span>
-        <ContentEditable state={bio} stateHandler={setBio} />
-      </div>
-      {hasValuesChanged() && (
-        <StyledMarginedFlexRow>
-          <Button warning onClick={cancelChanges}>
-            Cancel
-          </Button>
-          <Button onClick={commitChanges}>Save changes</Button>
-        </StyledMarginedFlexRow>
-      )}
+      <StyledButton onClick={openModal}>
+        <img src="./pencil.png" alt="" />
+      </StyledButton>
+      <h2>{`${firstName} ${lastName}, ${age} years old`}</h2>
+      <h3>{`Country: ${country}`}</h3>
+      <h3>{`Contact: ${email}`}</h3>
+      <p>{bio && `About user: ${bio}`}</p>
     </StyledUserProfile>
   );
 };

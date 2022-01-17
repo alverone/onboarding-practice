@@ -3,37 +3,28 @@ import { TextInput } from "./TextInput";
 import { FlexRow } from "./FlexRow";
 import { CountrySelect } from "./CountrySelect";
 import { SubmitButton } from "./SubmitButton";
-import { ControlledCheckbox } from "./ControlledCheckbox";
+import { Button } from "./Button";
+import { StyledMarginedFlexRow } from "./styled/FlexRow.styled";
 import { StyledForm } from "./styled/Form.styled";
 import { ModalCloseButton } from "./styled/ModalCloseButton.styled";
 
-import { postUserFetch, setUser } from "../features/userSlice";
+import { useUserWithID } from "../features/selectors/useUserWithID";
 import { useDispatch } from "react-redux";
 import { useProfileSchema } from "../features/useProfileSchema";
+import { updateUserPost, setUser } from "../features/userSlice";
 
-import { v4 as uuid } from "uuid";
-
-const initialState = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  country: "",
-  age: "",
-  bio: "",
-  tos: false,
-};
-
-export const AppForm = ({ modalHandler }) => {
+export const EditUserForm = ({ modalHandler, id }) => {
   const dispatch = useDispatch();
-  const ProfileSchema = useProfileSchema(true);
+  const user = useUserWithID(id);
+  const ProfileSchema = useProfileSchema(false);
 
   const handleFormSubmission = (values, { setErrors }) => {
-    const userData = { ...values, id: uuid() };
+    const newUserData = { ...values, id: id };
 
     dispatch(
-      postUserFetch({
-        user: userData,
-        modalHandler: () => modalHandler(false),
+      updateUserPost({
+        user: newUserData,
+        modalHandler: modalHandler,
         errorHandler: setErrors,
       })
     );
@@ -46,13 +37,13 @@ export const AppForm = ({ modalHandler }) => {
 
   return (
     <StyledForm>
-      <h1>Add user</h1>
       <Formik
-        initialValues={initialState}
+        initialValues={user}
         validationSchema={ProfileSchema}
         onSubmit={handleFormSubmission}
       >
         <Form>
+          <h1>Edit user</h1>
           <FlexRow>
             <TextInput name="firstName" label="First Name *" />
             <TextInput name="lastName" label="Last Name *" />
@@ -67,8 +58,12 @@ export const AppForm = ({ modalHandler }) => {
             rows="5"
             multiline
           />
-          <ControlledCheckbox name="tos" />
-          <SubmitButton margined>Submit</SubmitButton>
+          <StyledMarginedFlexRow spaceBetween>
+            <Button warning onClick={closeModal}>
+              Cancel
+            </Button>
+            <SubmitButton>Save</SubmitButton>
+          </StyledMarginedFlexRow>
         </Form>
       </Formik>
       <ModalCloseButton onClick={closeModal}>

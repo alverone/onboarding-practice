@@ -25,5 +25,5 @@ export const StyledButton = styled.div`
 `;
 
 export const StyledSubmitButton = styled(StyledButton)`
-  margin-top: 32px;
+  margin-top: ${(props) => (props.margined ? "32px" : "0")};
 `;

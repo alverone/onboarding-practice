@@ -1,4 +1,4 @@
-import { StyledButton } from "./styled/SubmitButton.styled";
+import { StyledButton } from "./styled/Button.styled";
 
 export const Button = ({ children, onClick, warning }) => {
   return (

@@ -13,7 +13,7 @@ export const CountrySelect = ({ name, initialValue = null }) => {
   const { setFieldValue } = useFormikContext();
   const inputConfig = {};
 
-  if (meta && meta.touched && meta.error) {
+  if (meta?.touched && meta?.error) {
     inputConfig.error = true;
     inputConfig.helperText = meta.error;
   }

@@ -1,3 +1,1 @@
-import { useSelector } from "react-redux";
-
-export const useUserData = () => useSelector((state) => state.user.userData);
+export const useUserData = (state) => state.user.userData;

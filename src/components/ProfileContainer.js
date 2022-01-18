@@ -4,10 +4,11 @@ import { UserProfile } from "./UserProfile";
 import { EditUserForm } from "./EditUserForm";
 
 import { useUsers } from "../features/selectors/useUsers";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 
 export const ProfileContainer = () => {
-  const users = useUsers();
+  const users = useSelector(useUsers);
   const [isEditingUser, setUserEditing] = useState(false);
   const [currentUserID, setCurrentUserID] = useState(null);
 

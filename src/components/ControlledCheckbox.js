@@ -18,7 +18,7 @@ export const ControlledCheckbox = ({ name, ...otherProps }) => {
     helperText: "",
   };
 
-  if (meta && meta.touched && meta.error) {
+  if (meta?.touched && meta?.error) {
     errorConfig.error = true;
     errorConfig.helperText = meta.error;
   }

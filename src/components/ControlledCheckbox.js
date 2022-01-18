@@ -6,9 +6,7 @@ export const ControlledCheckbox = ({ name, ...otherProps }) => {
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext();
 
-  const handleChange = (e) => {
-    setFieldValue(name, e.target.checked);
-  };
+  const handleChange = (e) => setFieldValue(name, e.target.checked);
 
   const config = {
     ...otherProps,
@@ -22,7 +20,7 @@ export const ControlledCheckbox = ({ name, ...otherProps }) => {
     helperText: "",
   };
 
-  if (meta && meta.touched && meta.error) {
+  if (meta?.touched && meta?.error) {
     errorConfig.error = true;
     errorConfig.helperText = meta.error;
   }

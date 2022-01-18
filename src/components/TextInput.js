@@ -19,7 +19,7 @@ export const TextInput = ({
     type: type,
   };
 
-  if (meta && meta.touched && meta.error) {
+  if (meta?.touched && meta?.error) {
     config.error = meta.error;
   }
 

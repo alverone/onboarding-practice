@@ -9,7 +9,7 @@ export const CountrySelect = ({ name }) => {
 
   const inputConfig = {};
 
-  if (meta && meta.touched && meta.error) {
+  if (meta?.touched && meta?.error) {
     inputConfig.error = true;
     inputConfig.helperText = meta.error;
   }

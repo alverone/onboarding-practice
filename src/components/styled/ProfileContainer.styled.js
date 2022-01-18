@@ -4,7 +4,7 @@ export const StyledProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 500px;
+  max-width: 675px;
   width: 100%;
   margin: 0 auto;
   & > div:not(:first-child) {

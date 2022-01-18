@@ -7,6 +7,7 @@ import { Button } from "./Button";
 import { StyledMarginedFlexRow } from "./styled/FlexRow.styled";
 import { StyledForm } from "./styled/Form.styled";
 import { ModalCloseButton } from "./styled/ModalCloseButton.styled";
+import { StyledH1 } from "./styled/Heading.styled";
 
 import { useUserWithID } from "../features/selectors/useUserWithID";
 import { useDispatch } from "react-redux";
@@ -41,7 +42,7 @@ export const EditUserForm = ({ modalHandler, id }) => {
         onSubmit={handleFormSubmission}
       >
         <Form>
-          <h1>Edit user</h1>
+          <StyledH1>Edit user</StyledH1>
           <FlexRow>
             <TextInput name="firstName" label="First Name *" />
             <TextInput name="lastName" label="Last Name *" />

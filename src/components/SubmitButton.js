@@ -1,5 +1,5 @@
-import { useFormikContext } from "formik";
 import { StyledSubmitButton } from "./styled/SubmitButton.styled";
+import { useFormikContext } from "formik";
 
 export const SubmitButton = ({ children, margined }) => {
   const { submitForm } = useFormikContext();

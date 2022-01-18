@@ -11,6 +11,6 @@ export const CloseButton = styled.div`
 `;
 
 export const ModalCloseButton = styled(CloseButton)`
-  top: -48px;
-  right: -48px;
+  top: 24px;
+  right: 24px;
 `;

@@ -6,11 +6,11 @@ import { SubmitButton } from "./SubmitButton";
 import { ControlledCheckbox } from "./ControlledCheckbox";
 import { StyledForm } from "./styled/Form.styled";
 import { ModalCloseButton } from "./styled/ModalCloseButton.styled";
+import { StyledH1 } from "./styled/Heading.styled";
 
 import { validateUserFetch } from "../features/userSlice";
 import { useDispatch } from "react-redux";
 import { useProfileSchema } from "../features/useProfileSchema";
-
 import { v4 as uuid } from "uuid";
 
 const initialState = {
@@ -44,7 +44,7 @@ export const AppForm = ({ modalHandler }) => {
 
   return (
     <StyledForm>
-      <h1>Add user</h1>
+      <StyledH1>Add user</StyledH1>
       <Formik
         initialValues={initialState}
         validationSchema={ProfileSchema}

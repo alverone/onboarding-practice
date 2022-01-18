@@ -1,8 +1,9 @@
-import { useField } from "formik";
 import { StyledError } from "./styled/Error.styled";
 import { StyledTextInput } from "./styled/TextInput.styled";
 import { StyledTextarea } from "./styled/Textarea.styled";
 import { StyledInputContainer } from "./styled/TextInput.styled";
+
+import { useField } from "formik";
 
 export const TextInput = ({
   name,

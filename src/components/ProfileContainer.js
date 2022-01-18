@@ -6,7 +6,7 @@ import { StyledConfirmationModal } from "./styled/ConfirmationModal.styled";
 import { StyledFlexRow } from "./styled/FlexRow.styled";
 import { Button } from "./Button";
 
-import { useUsers } from "../features/selectors";
+import { selectUsers } from "../features/selectors";
 import { removeUser } from "../features/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
@@ -15,9 +15,8 @@ export const ProfileContainer = () => {
   const [isEditingUser, setUserEditing] = useState(false);
   const [currentUserID, setCurrentUserID] = useState(null);
   const [confirmationVisibility, setConfirmationVisibility] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(null);
   const dispatch = useDispatch();
-  const users = useSelector(useUsers);
+  const users = useSelector(selectUsers);
 
   const openConfirmationModal = () => setConfirmationVisibility(true);
   const closeConfirmationModal = () => setConfirmationVisibility(false);
@@ -50,7 +49,7 @@ export const ProfileContainer = () => {
               <Button warning onClick={closeConfirmationModal}>
                 Cancel
               </Button>
-              <Button onClick={() => fulfilConfirmationModal(selectedUser)}>
+              <Button onClick={() => fulfilConfirmationModal(currentUserID)}>
                 Proceed
               </Button>
             </StyledFlexRow>

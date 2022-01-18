@@ -9,14 +9,14 @@ import { StyledForm } from "./styled/Form.styled";
 import { ModalCloseButton } from "./styled/ModalCloseButton.styled";
 import { StyledH1 } from "./styled/Heading.styled";
 
-import { useUserWithID } from "../features/selectors";
+import { selectUserWithID } from "../features/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useProfileSchema } from "../features/useProfileSchema";
 import { validateUserFetch } from "../features/userSlice";
 
 export const EditUserForm = ({ modalHandler, id }) => {
   const dispatch = useDispatch();
-  const user = useSelector(useUserWithID(id));
+  const user = useSelector(selectUserWithID(id));
   const ProfileSchema = useProfileSchema(false);
 
   const handleFormSubmission = (values, { setErrors }) => {

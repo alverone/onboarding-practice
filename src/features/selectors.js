@@ -1,6 +1,6 @@
-export const useUsers = (state) => state.user.users;
+export const selectUsers = (state) => state.user.users;
 
-export const useUserData = (state) => state.user.userData;
+export const selectUserData = (state) => state.user.userData;
 
-export const useUserWithID = (id) => (state) =>
+export const selectUserWithID = (id) => (state) =>
   state.user.users.filter((user) => user.id === id)[0];

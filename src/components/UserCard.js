@@ -17,9 +17,14 @@ export const UserCard = ({
     editUserModalHandler(true);
   };
 
+  const openUserDeletionModal = () => {
+    currentUserIdHandler(id);
+    deleteUserModalHandler();
+  };
+
   return (
     <StyledUserCard>
-      <CloseButton onClick={deleteUserModalHandler}>
+      <CloseButton onClick={openUserDeletionModal}>
         <img src="./close-sign.png" alt="Delete user profile" width="36" />
       </CloseButton>
       <StyledEditUserButton onClick={openUserEditModal}>

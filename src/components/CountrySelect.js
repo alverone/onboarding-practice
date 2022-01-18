@@ -26,7 +26,12 @@ export const CountrySelect = ({ name, initialValue = null }) => {
 
   return (
     <>
-      <StyledSelect {...field} value={country} name={name}>
+      <StyledSelect
+        {...field}
+        value={country}
+        name={name}
+        error={inputConfig.error}
+      >
         <option disabled value="initial">
           Choose your country
         </option>

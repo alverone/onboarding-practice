@@ -36,8 +36,10 @@ export const UserCard = ({
 
       {bio && (
         <>
-          <StyledParagraph bold>About this user:</StyledParagraph>
-          <StyledParagraph>{`${bio}`}</StyledParagraph>
+          <StyledParagraph margin="0 8px 0 0" bold>
+            About this user:
+          </StyledParagraph>
+          <StyledParagraph margin="0">{`${bio}`}</StyledParagraph>
         </>
       )}
     </StyledUserCard>

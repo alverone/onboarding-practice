@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 export const StyledSelect = styled.select`
   width: 100%;
-  border-radius: 4px 4px 0 0;
+  border-radius: 6px 6px 0 0;
   background-color: white;
-  border: 2px solid ${(props) => (props.error ? "rgba(255,0,0,0.7)" : "#ccc")};
+  border: 2px solid #e6e6e6;
+  border-bottom: 2px solid
+    ${(props) => (props.error ? "rgba(255,0,0,0.7)" : "#e6e6e6")};
   padding: 16px 12px;
   margin: 8px 0;
   width: 100%;
@@ -18,7 +20,7 @@ export const StyledSelect = styled.select`
   }
 
   &:hover {
-    border: 2px solid black;
+    border: 2px solid #a6a6a6;
   }
 
   &:active,

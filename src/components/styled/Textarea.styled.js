@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledTextarea = styled.textarea`
   border-radius: 6px 6px 0 0;
   background-color: white;
-  border: 2px solid #eee;
+  border: 2px solid #e6e6e6;
   padding: 12px;
   border-bottom: 2px solid
     ${(props) => (props.error ? "rgba(255,0,0,0.7)" : "#ccc")};

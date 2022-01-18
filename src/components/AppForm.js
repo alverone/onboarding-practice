@@ -52,7 +52,7 @@ export const AppForm = ({ modalHandler }) => {
       >
         <Form>
           <FlexRow>
-            <TextInput name="firstName" label="First Name *" />
+            <TextInput name="firstName" label="First Name *" autofocus />
             <TextInput name="lastName" label="Last Name *" />
           </FlexRow>
           <TextInput name="email" label="Email *" type="email" />

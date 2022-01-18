@@ -1,5 +1,7 @@
-import { StyledSubmitButton } from "./styled/SubmitButton.styled";
+import { StyledSubmitButton } from "./styled/Button.styled";
 
-export const SubmitButton = ({ children }) => {
-  return <StyledSubmitButton>{children}</StyledSubmitButton>;
+export const SubmitButton = ({ children, margined }) => {
+  return (
+    <StyledSubmitButton margined={margined}>{children}</StyledSubmitButton>
+  );
 };

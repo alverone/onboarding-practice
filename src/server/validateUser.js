@@ -34,12 +34,6 @@ function validateUser({ firstName, lastName, email, age, country, bio, tos }) {
     errors.age = "User must be 18 or older to use the Service";
   }
 
-  if (isFinite(Number(country))) {
-    errors.country = "Country must be a string";
-  } else if (!country.length) {
-    errors.country = "Country must be filled in";
-  }
-
   if (bio.length > 500) {
     errors.bio = "Bio must be lesser than 500 symbols";
   }

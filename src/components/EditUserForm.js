@@ -3,39 +3,31 @@ import { TextInput } from "./TextInput";
 import { FlexRow } from "./FlexRow";
 import { CountrySelect } from "./CountrySelect";
 import { SubmitButton } from "./SubmitButton";
-import { ControlledCheckbox } from "./ControlledCheckbox";
+import { Button } from "./Button";
+import { StyledMarginedFlexRow } from "./styled/FlexRow.styled";
 import { StyledForm } from "./styled/Form.styled";
 import { ModalCloseButton } from "./styled/ModalCloseButton.styled";
 import { StyledH1 } from "./styled/Heading.styled";
 
-import { validateUserFetch } from "../features/userSlice";
-import { useDispatch } from "react-redux";
+import { useUserWithID } from "../features/selectors";
+import { useDispatch, useSelector } from "react-redux";
 import { useProfileSchema } from "../features/useProfileSchema";
-import { v4 as uuid } from "uuid";
+import { validateUserFetch } from "../features/userSlice";
 
-const initialState = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  country: "",
-  age: "",
-  bio: "",
-  tos: false,
-};
-
-export const AppForm = ({ modalHandler }) => {
+export const EditUserForm = ({ modalHandler, id }) => {
   const dispatch = useDispatch();
-  const ProfileSchema = useProfileSchema(true);
+  const user = useSelector(useUserWithID(id));
+  const ProfileSchema = useProfileSchema(false);
 
   const handleFormSubmission = (values, { setErrors }) => {
-    const userData = { ...values, id: uuid() };
+    const newUserData = { ...values, id: id };
 
     dispatch(
       validateUserFetch({
-        user: userData,
-        modalHandler: () => modalHandler(false),
+        user: newUserData,
+        modalHandler: modalHandler,
         errorHandler: setErrors,
-        postCase: "ADD",
+        postCase: "UPDATE",
       })
     );
   };
@@ -44,27 +36,33 @@ export const AppForm = ({ modalHandler }) => {
 
   return (
     <StyledForm>
-      <StyledH1>Add user</StyledH1>
       <Formik
-        initialValues={initialState}
+        initialValues={user}
         validationSchema={ProfileSchema}
         onSubmit={handleFormSubmission}
       >
         <Form>
+          <StyledH1>Edit user</StyledH1>
           <FlexRow>
             <TextInput name="firstName" label="First Name *" />
             <TextInput name="lastName" label="Last Name *" />
           </FlexRow>
-          <TextInput name="email" label="Email *" type="email" />
+          <TextInput name="email" label="Email *" />
           <TextInput name="age" label="Age *" type="number" />
-          <CountrySelect name="country" />
+          <CountrySelect name="country" initialValue={user.country} />
           <TextInput
             name="bio"
             label="Write something about yourself..."
+            helperText="max 500 characters"
+            rows="5"
             multiline
           />
-          <ControlledCheckbox name="tos" />
-          <SubmitButton margined>Submit</SubmitButton>
+          <StyledMarginedFlexRow spaceBetween>
+            <Button warning onClick={closeModal}>
+              Cancel
+            </Button>
+            <SubmitButton>Save</SubmitButton>
+          </StyledMarginedFlexRow>
         </Form>
       </Formik>
       <ModalCloseButton onClick={closeModal}>

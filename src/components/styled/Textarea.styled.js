@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const StyledTextarea = styled.textarea`
-  border-radius: 4px 4px 0 0;
+  border-radius: 6px 6px 0 0;
   background-color: white;
   border: 2px solid #eee;
   padding: 12px;
   border-bottom: 2px solid
     ${(props) => (props.error ? "rgba(255,0,0,0.7)" : "#ccc")};
-  margin-bottom: 8px;
+  margin-top: 8px;
   width: 100%;
 
   &::placeholder {

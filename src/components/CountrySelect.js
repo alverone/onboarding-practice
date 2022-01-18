@@ -1,11 +1,16 @@
 import { countries } from "../countries";
-import { useField } from "formik";
-import { StyledCountrySelect } from "./styled/CountrySelect.styled";
 import { StyledSelect } from "./styled/Select.styled";
 import { StyledError } from "./styled/Error.styled";
 
-export const CountrySelect = ({ name }) => {
+import { useField, useFormikContext } from "formik";
+import { useState } from "react";
+
+export const CountrySelect = ({ name, initialValue = null }) => {
+  const [country, setCountry] = useState(
+    initialValue ? initialValue : "initial"
+  );
   const [field, meta] = useField(name);
+  const { setFieldValue } = useFormikContext();
   const inputConfig = {};
 
   if (meta && meta.touched && meta.error) {
@@ -13,10 +18,16 @@ export const CountrySelect = ({ name }) => {
     inputConfig.helperText = meta.error;
   }
 
+  field.onChange = (e) => {
+    const value = e.target.value;
+    setCountry(value);
+    setFieldValue(name, value);
+  };
+
   return (
-    <StyledCountrySelect>
-      <StyledSelect {...field} name={name}>
-        <option hidden selected>
+    <>
+      <StyledSelect {...field} value={country} name={name}>
+        <option disabled value="initial">
           Choose your country
         </option>
         {countries.map((country) => (
@@ -26,6 +37,6 @@ export const CountrySelect = ({ name }) => {
         ))}
       </StyledSelect>
       {inputConfig.error && <StyledError>{inputConfig.helperText}</StyledError>}
-    </StyledCountrySelect>
+    </>
   );
 };

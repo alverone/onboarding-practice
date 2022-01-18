@@ -11,7 +11,7 @@ import { ModalCloseButton } from "./styled/ModalCloseButton.styled";
 import { useUserWithID } from "../features/selectors/useUserWithID";
 import { useDispatch } from "react-redux";
 import { useProfileSchema } from "../features/useProfileSchema";
-import { updateUserPost, setUser } from "../features/userSlice";
+import { validateUserFetch } from "../features/userSlice";
 
 export const EditUserForm = ({ modalHandler, id }) => {
   const dispatch = useDispatch();
@@ -22,18 +22,16 @@ export const EditUserForm = ({ modalHandler, id }) => {
     const newUserData = { ...values, id: id };
 
     dispatch(
-      updateUserPost({
+      validateUserFetch({
         user: newUserData,
         modalHandler: modalHandler,
         errorHandler: setErrors,
+        postCase: "UPDATE",
       })
     );
   };
 
-  const closeModal = () => {
-    modalHandler(false);
-    dispatch(setUser({}));
-  };
+  const closeModal = () => modalHandler(false);
 
   return (
     <StyledForm>
@@ -50,7 +48,7 @@ export const EditUserForm = ({ modalHandler, id }) => {
           </FlexRow>
           <TextInput name="email" label="Email *" />
           <TextInput name="age" label="Age *" type="number" />
-          <CountrySelect name="country" />
+          <CountrySelect name="country" initialValue={user.country} />
           <TextInput
             name="bio"
             label="Write something about yourself..."

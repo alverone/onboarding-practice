@@ -1,20 +1,16 @@
 import { Checkbox } from "@mui/material";
-import { useField, useFormikContext } from "formik";
 import { StyledError } from "./styled/Error.styled.js";
+import { useField, useFormikContext } from "formik";
 
 export const ControlledCheckbox = ({ name, ...otherProps }) => {
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext();
 
-  const handleChange = (e) => {
-    setFieldValue(name, e.target.checked);
-  };
-
   const config = {
     ...otherProps,
     ...field,
     variant: "primary",
-    onChange: handleChange,
+    onChange: (e) => setFieldValue(name, e.target.checked),
   };
 
   const errorConfig = {

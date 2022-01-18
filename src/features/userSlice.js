@@ -10,16 +10,12 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    //remove user by either index or id
     removeUser: (state, action) => {
       const index = action.payload;
       state.users.splice(index, 1);
     },
-    setUser: (state, action) => {
-      state.userData = action.payload;
-    },
-    updateUserPost: (state, action) => {
-      state.userData = action.payload.user;
-    },
+    //after validating user data, update user by id
     updateUserSuccess: (state, action) => {
       const userData = action.payload;
       let userIndex = 0;
@@ -37,15 +33,18 @@ const userSlice = createSlice({
 
       state.users = newUsers;
     },
-    postUserFetch: (state, action) => {
+    //validate user on server
+    validateUserFetch: (state, action) => {
       state.userData = action.payload.user;
     },
-    postUserSuccess: (state) => {
+    //add user once data has been validated
+    validateUserSuccess: (state) => {
       state.error = "";
       state.users.push(state.userData);
       state.userData = {};
     },
-    postUserError: (state, action) => {
+    //handle server errors
+    validateUserError: (state, action) => {
       const { errors, handler } = action.payload;
       handler(errors);
       state.error = errors;
@@ -55,11 +54,10 @@ const userSlice = createSlice({
 
 export const {
   removeUser,
-  updateUserPost,
   updateUserSuccess,
-  setUser,
-  postUserFetch,
-  postUserSuccess,
-  postUserError,
+  validateUserFetch,
+  validateUserSuccess,
+  validateUserError,
 } = userSlice.actions;
+
 export default userSlice.reducer;

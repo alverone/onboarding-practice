@@ -7,7 +7,7 @@ import { ControlledCheckbox } from "./ControlledCheckbox";
 import { StyledForm } from "./styled/Form.styled";
 import { ModalCloseButton } from "./styled/ModalCloseButton.styled";
 
-import { postUserFetch, setUser } from "../features/userSlice";
+import { validateUserFetch } from "../features/userSlice";
 import { useDispatch } from "react-redux";
 import { useProfileSchema } from "../features/useProfileSchema";
 
@@ -31,18 +31,16 @@ export const AppForm = ({ modalHandler }) => {
     const userData = { ...values, id: uuid() };
 
     dispatch(
-      postUserFetch({
+      validateUserFetch({
         user: userData,
         modalHandler: () => modalHandler(false),
         errorHandler: setErrors,
+        postCase: "ADD",
       })
     );
   };
 
-  const closeModal = () => {
-    modalHandler(false);
-    dispatch(setUser({}));
-  };
+  const closeModal = () => modalHandler(false);
 
   return (
     <StyledForm>

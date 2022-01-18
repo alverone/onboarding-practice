@@ -1,6 +1,7 @@
-import { useField } from "formik";
 import { TextField } from "@mui/material";
 import { StyledTextInput } from "./styled/TextInput.styled.js";
+
+import { useField } from "formik";
 
 export const TextInput = ({ name, ...otherProps }) => {
   const [field, meta] = useField(name);

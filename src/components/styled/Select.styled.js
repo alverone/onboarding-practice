@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledSelect = styled.select`
+  width: 100%;
   border-radius: 4px 4px 0 0;
   background-color: white;
   border: 2px solid ${(props) => (props.error ? "rgba(255,0,0,0.7)" : "#ccc")};

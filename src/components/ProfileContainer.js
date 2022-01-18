@@ -1,9 +1,10 @@
 import { StyledProfileContainer } from "./styled/ProfileContainer.styled";
-import { useState } from "react";
 import { Modal } from "./styled/Modal.styled";
 import { UserProfile } from "./UserProfile";
-import { useUsers } from "../features/selectors/useUsers";
 import { EditUserForm } from "./EditUserForm";
+
+import { useUsers } from "../features/selectors/useUsers";
+import { useState } from "react";
 
 export const ProfileContainer = () => {
   const users = useUsers();

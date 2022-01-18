@@ -55,14 +55,12 @@ export const AppForm = ({ modalHandler }) => {
             <TextInput name="firstName" label="First Name *" />
             <TextInput name="lastName" label="Last Name *" />
           </FlexRow>
-          <TextInput name="email" label="Email *" />
+          <TextInput name="email" label="Email *" type="email" />
           <TextInput name="age" label="Age *" type="number" />
           <CountrySelect name="country" />
           <TextInput
             name="bio"
             label="Write something about yourself..."
-            helperText="max 500 characters"
-            rows="5"
             multiline
           />
           <ControlledCheckbox name="tos" />

@@ -1,6 +1,6 @@
-import { Checkbox } from "@mui/material";
-import { StyledError } from "./styled/Error.styled.js";
 import { useField, useFormikContext } from "formik";
+import { StyledError } from "./styled/Error.styled.js";
+import { StyledCheckbox } from "./styled/Checkbox.styled.js";
 
 export const ControlledCheckbox = ({ name, ...otherProps }) => {
   const [field, meta] = useField(name);
@@ -25,8 +25,8 @@ export const ControlledCheckbox = ({ name, ...otherProps }) => {
 
   return (
     <label>
-      <Checkbox {...config} label="Terms of Service" />I agree to Terms of
-      Service
+      <StyledCheckbox type="checkbox" {...config} label="Terms of Service" />I
+      agree to Terms of Service
       {errorConfig.error && <StyledError>{errorConfig.helperText}</StyledError>}
     </label>
   );

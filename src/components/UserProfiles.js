@@ -1,19 +1,15 @@
 import { StyledProfileContainer } from "./styled/ProfileContainer.styled";
-import { Modal } from "./styled/Modal.styled";
 import { UserCard } from "./UserCard";
-import { EditUserForm } from "./EditUserForm";
+import { useUsers } from "../features/selectors/useUsers";
+import { useState } from "react";
+import { Modal } from "./styled/Modal.styled";
+import { removeUser } from "../features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { StyledConfirmationModal } from "./styled/ConfirmationModal.styled";
 import { StyledFlexRow } from "./styled/FlexRow.styled";
 import { Button } from "./Button";
 
-import { useUsers } from "../features/selectors";
-import { removeUser } from "../features/userSlice";
-import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
-
-export const ProfileContainer = () => {
-  const [isEditingUser, setUserEditing] = useState(false);
-  const [currentUserID, setCurrentUserID] = useState(null);
+export const UserProfiles = () => {
   const [confirmationVisibility, setConfirmationVisibility] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const dispatch = useDispatch();
@@ -27,21 +23,18 @@ export const ProfileContainer = () => {
   };
 
   return (
-    <StyledProfileContainer>
-      {users.map((user) => (
-        <UserCard
-          user={user}
-          key={user.id}
-          editUserModalHandler={setUserEditing}
-          currentUserIdHandler={setCurrentUserID}
-          deleteUserModalHandler={openConfirmationModal}
-        />
-      ))}
-      {isEditingUser && (
-        <Modal>
-          <EditUserForm id={currentUserID} modalHandler={setUserEditing} />
-        </Modal>
-      )}
+    <>
+      <StyledProfileContainer>
+        {users.map((user, index) => (
+          <UserCard
+            user={user}
+            key={user.id}
+            setUser={setSelectedUser}
+            openModalHandler={openConfirmationModal}
+            closeModalHandler={closeConfirmationModal}
+          />
+        ))}
+      </StyledProfileContainer>
       {confirmationVisibility && (
         <Modal>
           <StyledConfirmationModal>
@@ -57,6 +50,6 @@ export const ProfileContainer = () => {
           </StyledConfirmationModal>
         </Modal>
       )}
-    </StyledProfileContainer>
+    </>
   );
 };

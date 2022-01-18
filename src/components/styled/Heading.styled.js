@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledH1 = styled.h1`
   font-size: 32px;
   line-height: 36px;
-  margin: ${(props) => (props.margin ? props.margin : "0 0 36px")};
+  margin: ${(props) => (props.margin ? props.margin : "0 0 24px")};
   font-family: Inter, Helvetica, sans-serif;
 `;
 

@@ -6,7 +6,7 @@ export const StyledSelect = styled.select`
   background-color: white;
   border: 2px solid ${(props) => (props.error ? "rgba(255,0,0,0.7)" : "#ccc")};
   padding: 16px 12px;
-  margin-bottom: 16px;
+  margin: 8px 0;
   width: 100%;
   cursor: pointer;
   transition: 175ms ease;

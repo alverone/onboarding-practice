@@ -14,6 +14,8 @@ export const StyledButton = styled.button.attrs({ type: "button" })`
   border-radius: 6px;
   cursor: pointer;
   transition: 135ms ease-in-out;
+  -webkit-appearance: none;
+  appearance: none;
 
   &:hover {
     background-color: ${(props) => (props.warning ? "#e34949" : "#0062eb")};

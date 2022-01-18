@@ -7,4 +7,15 @@ export const StyledUserCard = styled.div`
   color: white;
   display: inline-block;
   position: relative;
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h5,
+  & span,
+  & p {
+    cursor: text;
+  }
 `;

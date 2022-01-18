@@ -1,6 +1,5 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { TextInput } from "./TextInput";
 import { FlexRow } from "./FlexRow";
 import { CountrySelect } from "./CountrySelect";
 import { SubmitButton } from "./SubmitButton";
@@ -10,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { StyledForm } from "./styled/Form.styled";
 import { v4 as uuid } from "uuid";
 import { ModalCloseButton } from "./styled/ModalCloseButton.styled";
+import { TextInput } from "./TextInput";
 
 const ProfileSchema = Yup.object().shape({
   firstName: Yup.string().required("Required"),
@@ -57,14 +57,12 @@ export const AppForm = ({ modalHandler }) => {
             <TextInput name="firstName" label="First Name *" />
             <TextInput name="lastName" label="Last Name *" />
           </FlexRow>
-          <TextInput name="email" label="Email *" />
+          <TextInput name="email" label="Email *" type="email" />
           <TextInput name="age" label="Age *" type="number" />
           <CountrySelect name="country" />
           <TextInput
             name="bio"
             label="Write something about yourself..."
-            helperText="max 500 characters"
-            rows="5"
             multiline
           />
           <ControlledCheckbox name="tos" />

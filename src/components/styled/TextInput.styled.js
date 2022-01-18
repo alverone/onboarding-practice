@@ -7,7 +7,7 @@ export const StyledTextInput = styled.input`
   padding: 16px 12px;
   border-bottom: 2px solid
     ${(props) => (props.error ? "rgba(255,0,0,0.7)" : "#ccc")};
-  margin-bottom: 16px;
+  margin: 8px 0;
   width: 100%;
 
   &::placeholder {

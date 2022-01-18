@@ -31,7 +31,7 @@ export const TextInput = ({
       ) : (
         <StyledTextInput {...config} />
       )}
-      {config.error && <StyledError>{config.error}</StyledError>}
+      {config.error && <StyledError>{config.helperText}</StyledError>}
     </StyledInputContainer>
   );
 };

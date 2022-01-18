@@ -2,12 +2,12 @@ import { Typography } from "@mui/material";
 import { StyledUserCard } from "./styled/UserCard.styled";
 import { CloseButton } from "./styled/ModalCloseButton.styled";
 
-export const UserCard = ({ user, index, openModalHandler, setUser }) => {
-  const { lastName, firstName, email, country, bio, age } = user;
+export const UserCard = ({ user, openModalHandler, setUser }) => {
+  const { lastName, firstName, email, country, bio, age, id } = user;
 
   const handleClick = () => {
     openModalHandler();
-    setUser(index);
+    setUser(id);
   };
 
   return (

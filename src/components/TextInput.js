@@ -12,7 +12,7 @@ export const TextInput = ({ name, ...otherProps }) => {
     fullWidth: true,
   };
 
-  if (meta && meta.touched && meta.error) {
+  if (meta?.touched && meta?.error) {
     config.error = true;
     config.helperText = meta.error;
   }

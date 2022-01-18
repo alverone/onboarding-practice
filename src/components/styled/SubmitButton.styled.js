@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledButton = styled.div`
+export const StyledButton = styled.button.attrs({ type: "button" })`
   align-self: flex-start;
   display: block;
   border: 0px solid transparent;
@@ -23,6 +23,8 @@ export const StyledButton = styled.div`
   }
 `;
 
-export const StyledSubmitButton = styled(StyledButton)`
+export const StyledSubmitButton = styled(StyledButton).attrs({
+  type: "submit",
+})`
   margin-top: 32px;
 `;

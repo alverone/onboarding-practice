@@ -4,7 +4,7 @@ import { useUsers } from "../features/selectors/useUsers";
 import { useState } from "react";
 import { Modal } from "./styled/Modal.styled";
 import { removeUser } from "../features/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StyledConfirmationModal } from "./styled/ConfirmationModal.styled";
 import { StyledFlexRow } from "./styled/FlexRow.styled";
 import { Button } from "./Button";
@@ -13,13 +13,13 @@ export const UserProfiles = () => {
   const [confirmationVisibility, setConfirmationVisibility] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const dispatch = useDispatch();
-  const users = useUsers();
+  const users = useSelector(useUsers);
 
   const openConfirmationModal = () => setConfirmationVisibility(true);
   const closeConfirmationModal = () => setConfirmationVisibility(false);
-  const fulfilConfirmationModal = (index) => {
+  const fulfilConfirmationModal = (id) => {
     closeConfirmationModal();
-    dispatch(removeUser(index));
+    dispatch(removeUser(id));
   };
 
   return (
@@ -29,7 +29,6 @@ export const UserProfiles = () => {
           <UserCard
             user={user}
             key={user.id}
-            index={index}
             setUser={setSelectedUser}
             openModalHandler={openConfirmationModal}
             closeModalHandler={closeConfirmationModal}

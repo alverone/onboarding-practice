@@ -11,8 +11,20 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     removeUser: (state, action) => {
-      const index = action.payload;
-      state.users.splice(index, 1);
+      const id = action.payload;
+      let userIndex = 0;
+
+      state.users.filter((user, index) => {
+        if (id === user.id) {
+          userIndex = index;
+          return true;
+        }
+        return false;
+      });
+
+      let newUsers = state.users;
+      newUsers.splice(userIndex, 1);
+      state.users = newUsers;
     },
     updateUser: (state, action) => {
       const { index, userData } = action.payload;

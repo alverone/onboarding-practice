@@ -20,7 +20,8 @@ export const TextInput = ({
   };
 
   if (meta?.touched && meta?.error) {
-    config.error = meta.error;
+    config.error = true;
+    config.helperText = meta.error;
   }
 
   return (

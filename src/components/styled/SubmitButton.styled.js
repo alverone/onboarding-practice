@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledButton = styled.div`
+export const StyledButton = styled.button`
   align-self: flex-start;
   display: block;
   border: 0px solid transparent;
@@ -14,6 +14,8 @@ export const StyledButton = styled.div`
   border-radius: 6px;
   cursor: pointer;
   transition: 135ms ease-in-out;
+  -webkit-appearance: none;
+  appearance: none;
 
   &:hover {
     background-color: #0062eb;

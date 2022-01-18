@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const useProfileSchema = (tos) => {
+export const getProfileSchema = (tos) => {
   if (tos) {
     return Yup.object().shape({
       firstName: Yup.string().required("Required"),

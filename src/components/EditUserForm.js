@@ -11,13 +11,13 @@ import { StyledH1 } from "./styled/Heading.styled";
 
 import { selectUserWithID } from "../features/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { useProfileSchema } from "../features/useProfileSchema";
+import { getProfileSchema } from "../features/getProfileSchema";
 import { validateUserFetch } from "../features/userSlice";
 
 export const EditUserForm = ({ modalHandler, id }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUserWithID(id));
-  const ProfileSchema = useProfileSchema(false);
+  const ProfileSchema = getProfileSchema(false);
 
   const handleFormSubmission = (values, { setErrors }) => {
     const newUserData = { ...values, id: id };

@@ -10,7 +10,7 @@ import { StyledH1 } from "./styled/Heading.styled";
 
 import { validateUserFetch } from "../features/userSlice";
 import { useDispatch } from "react-redux";
-import { useProfileSchema } from "../features/useProfileSchema";
+import { getProfileSchema } from "../features/getProfileSchema";
 import { v4 as uuid } from "uuid";
 
 const initialState = {
@@ -25,7 +25,7 @@ const initialState = {
 
 export const AppForm = ({ modalHandler }) => {
   const dispatch = useDispatch();
-  const ProfileSchema = useProfileSchema(true);
+  const ProfileSchema = getProfileSchema(true);
 
   const handleFormSubmission = (values, { setErrors }) => {
     const userData = { ...values, id: uuid() };

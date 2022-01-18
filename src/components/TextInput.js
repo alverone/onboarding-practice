@@ -1,25 +1,36 @@
 import { useField } from "formik";
-import { TextField } from "@mui/material";
-import { StyledTextInput } from "./styled/TextInput.styled.js";
+import { StyledError } from "./styled/Error.styled";
+import { StyledTextInput } from "./styled/TextInput.styled";
+import { StyledTextarea } from "./styled/Textarea.styled";
+import { StyledInputContainer } from "./styled/TextInput.styled";
 
-export const TextInput = ({ name, ...otherProps }) => {
+export const TextInput = ({
+  name,
+  type = "text",
+  label,
+  multiline = false,
+}) => {
   const [field, meta] = useField(name);
 
   const config = {
-    ...otherProps,
     ...field,
-    variant: "outlined",
-    fullWidth: true,
+    placeholder: label,
+    name: name,
+    type: type,
   };
 
-  if (meta && meta.touched && meta.error) {
-    config.error = true;
-    config.helperText = meta.error;
+  if (meta?.touched && meta?.error) {
+    config.error = meta.error;
   }
 
   return (
-    <StyledTextInput>
-      <TextField {...config} />
-    </StyledTextInput>
+    <StyledInputContainer>
+      {multiline ? (
+        <StyledTextarea {...config} rows="5" />
+      ) : (
+        <StyledTextInput {...config} />
+      )}
+      {config.error && <StyledError>{config.error}</StyledError>}
+    </StyledInputContainer>
   );
 };

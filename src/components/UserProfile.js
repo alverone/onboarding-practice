@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { StyledUserProfile } from "./styled/UserProfile.styled";
 import { CloseButton } from "./styled/ModalCloseButton.styled";
 
-export const UserProfile = ({ user, index }) => {
+export const UserProfile = ({ user }) => {
   const { lastName, firstName, email, country, bio, age } = user;
 
   return (

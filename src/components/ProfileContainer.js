@@ -3,7 +3,7 @@ import { Modal } from "./styled/Modal.styled";
 import { UserProfile } from "./UserProfile";
 import { EditUserForm } from "./EditUserForm";
 
-import { useUsers } from "../features/selectors/useUsers";
+import { useUsers } from "../features/selectors";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 

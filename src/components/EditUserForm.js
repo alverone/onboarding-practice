@@ -9,7 +9,7 @@ import { StyledForm } from "./styled/Form.styled";
 import { ModalCloseButton } from "./styled/ModalCloseButton.styled";
 import { StyledH1 } from "./styled/Heading.styled";
 
-import { useUserWithID } from "../features/selectors/useUserWithID";
+import { useUserWithID } from "../features/useUserWithID";
 import { useDispatch } from "react-redux";
 import { useProfileSchema } from "../features/useProfileSchema";
 import { validateUserFetch } from "../features/userSlice";
